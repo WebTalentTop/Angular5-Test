@@ -7,11 +7,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 import { CoreModule } from './core/core.module';
 import { PagesModule } from './pages/pages.module';
+import { ToolbarDialog } from './ui/toolbar-dialog/toolbar-dialog.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    ToolbarDialog
   ],
   imports: [
     BrowserModule,
@@ -21,6 +23,7 @@ import { PagesModule } from './pages/pages.module';
     CoreModule,
     PagesModule
   ],
+  entryComponents: [ToolbarDialog],
   providers: [],
   bootstrap: [AppComponent]
 })

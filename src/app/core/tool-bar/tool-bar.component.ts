@@ -14,8 +14,8 @@ export class ToolbarComponent {
   constructor(private breakpointObserver: BreakpointObserver, public dialog: MatDialog) {}
   openDialog() {
     const dialogRef = this.dialog.open(ToolbarDialog, {
-      width: '350px',
-      height: '350px',
+      width: '250px',
+      height: '150px',
     });
 
     dialogRef.afterClosed().subscribe(result => {

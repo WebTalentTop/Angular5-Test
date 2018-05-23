@@ -8,6 +8,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { CoreModule } from './core/core.module';
 import { PagesModule } from './pages/pages.module';
 import { ToolbarDialog } from './ui/toolbar-dialog/toolbar-dialog.component';
+import { MatFormFieldModule, MatInputModule } from '@angular/material';
 
 
 @NgModule({
@@ -21,7 +22,9 @@ import { ToolbarDialog } from './ui/toolbar-dialog/toolbar-dialog.component';
     BrowserAnimationsModule,
     LayoutModule,
     CoreModule,
-    PagesModule
+    PagesModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   entryComponents: [ToolbarDialog],
   providers: [],

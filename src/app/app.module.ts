@@ -1,20 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 import { CoreModule } from './core/core.module';
 import { PagesModule } from './pages/pages.module';
-import { ToolbarDialog } from './ui/toolbar-dialog/toolbar-dialog.component';
-import { MatFormFieldModule, MatInputModule, MatButtonModule } from '@angular/material';
-
+import { UIModule } from './ui/ui.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ToolbarDialog
   ],
   imports: [
     BrowserModule,
@@ -23,11 +19,8 @@ import { MatFormFieldModule, MatInputModule, MatButtonModule } from '@angular/ma
     LayoutModule,
     CoreModule,
     PagesModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule
+    UIModule
   ],
-  entryComponents: [ToolbarDialog],
   providers: [],
   bootstrap: [AppComponent]
 })

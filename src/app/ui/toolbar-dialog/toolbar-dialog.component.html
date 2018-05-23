@@ -1,8 +1,8 @@
 <mat-form-field>
-  <input matInput placeholder="Enter a dog's name" required>
+  <input matInput placeholder="Enter a dog's name" [(ngModel)] = "dogName" required>
 </mat-form-field>
 <div class="dialog-button-container">
-  <button mat-raised-button color="accent" class="dialog-button">
+  <button mat-raised-button color="accent" class="dialog-button" (click)="onYesClick()">
     <span>OK</span>
   </button>
   <button mat-raised-button color="accent" class="dialog-button" (click)="onNoClick()">

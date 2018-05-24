@@ -17,6 +17,9 @@ export class CustomgojsComponent implements AfterViewInit {
     const MAKE = go.GraphObject.make;
     const diagramDiv = this.dadDiagramDiv.nativeElement;
     const paletteDiv = this.dadPaletteDiv.nativeElement;
+    console.log(this.dadDiagramDiv)
+    // diagramDiv.clientWidth = 640
+    // this.dadDiagramDiv.requestUpdate();
 
     const yellowgrad = MAKE(go.Brush, 'Linear', { 0: 'rgb(254, 201, 0)', 1: 'rgb(254, 162, 0)' });
     const greengrad = MAKE(go.Brush, 'Linear', { 0: '#98FB98', 1: '#9ACD32' });
@@ -66,6 +69,12 @@ export class CustomgojsComponent implements AfterViewInit {
       }
     });
     */
+   this.myDiagram.addDiagramListener('InitialLayoutCompleted', function(e) {
+    var dia = e.diagram;
+    // add height for horizontal scrollbar
+    dia.div.style.width = "640px";
+    dia.div.style.height = "480px";
+  });
 
     const defaultAdornment =
       MAKE(go.Adornment, 'Spot',

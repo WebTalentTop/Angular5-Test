@@ -1,21 +1,28 @@
 import { Component } from '@angular/core';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { SET_NAME, NameAction, AppState } from '../../reducers/name';
+
 import { MatDialogRef} from '@angular/material';
-// import { DialogService } from "../../services/dialog.service";
+
+
 @Component({
   selector: 'toolbar-dialog',
   templateUrl: './toolbar-dialog.component.html',
   styleUrls: ['./toolbar-dialog.component.css']
 })
+
 export class ToolbarDialog  {
 
-  dogName: string;
+  name$: string;
 
-  constructor(public dialogRef: MatDialogRef<ToolbarDialog>) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
+  constructor(public dialogRef: MatDialogRef<ToolbarDialog>, private store: Store<AppState>) {
+    this.store.select('name').subscribe( data => this.name$ = data.payload );
   }
   onYesClick(): void {
-    // this.dialogService.changeMessage(this.dogName)
+    this.store.dispatch({ type: SET_NAME, payload: new NameAction(this.name$) });
+  }
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store, select } from '@ngrx/store';
+import { AppState } from '../../reducers/name';
 
 @Component({
   selector: 'app-home-page',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  name$: string;
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
+    this.store.select('name').subscribe( data => this.name$ = data.payload );
+
   }
 
 }

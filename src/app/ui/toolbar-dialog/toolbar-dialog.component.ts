@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { SET_NAME, NameAction, AppState } from '../../reducers/name';
+import { SET_NAME, NameAction, AppState } from '../../reducers';
 
 import { MatDialogRef} from '@angular/material';
 

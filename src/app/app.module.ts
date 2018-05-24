@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { StoreModule } from '@ngrx/store';
-import { nameReducer } from './reducers/name';
+import { nameReducer, toolbarReducer, sidebarReducer } from './reducers';
 
 
 import { AppComponent } from './app.component';
@@ -25,7 +25,11 @@ import { UIModule } from './ui/ui.module';
     CoreModule,
     PagesModule,
     UIModule,
-    StoreModule.forRoot({ name: nameReducer })
+    StoreModule.forRoot({
+      name: nameReducer,
+      toolbar: toolbarReducer,
+      sidebar: sidebarReducer,
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

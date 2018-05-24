@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { AppState } from '../../reducers/name';
+import { AppState } from '../../reducers';
 
 @Component({
   selector: 'app-home-page',

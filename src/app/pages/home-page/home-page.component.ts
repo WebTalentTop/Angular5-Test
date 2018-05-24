@@ -13,8 +13,7 @@ export class HomePageComponent implements OnInit {
   constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
-    this.store.select('name').subscribe( data => this.name$ = data.payload );
-
+    this.store.select('name').subscribe( data => this.name$ = (data as any).payload );
   }
 
 }

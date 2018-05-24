@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
 import { SET_NAME, NameAction, AppState } from '../../reducers/name';
 
 import { MatDialogRef} from '@angular/material';

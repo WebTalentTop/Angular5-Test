@@ -1,5 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import * as go from 'gojs';
+import { Store } from '@ngrx/store';
+import { TRIGGER_DIAGRAM_TEXT, DiagramTextAction, AppState } from '../../reducers';
 
 @Component({
   selector: 'app-customgojs',
@@ -11,7 +13,7 @@ export class CustomgojsComponent implements AfterViewInit {
   @ViewChild('dadDiagramDiv') dadDiagramDiv;
   @ViewChild('dadPaletteDiv') dadPaletteDiv;
 
-  constructor() {}
+  constructor(private store: Store<AppState>) {}
 
   ngAfterViewInit() {
     const MAKE = go.GraphObject.make;
@@ -28,7 +30,6 @@ export class CustomgojsComponent implements AfterViewInit {
     const whitegrad = MAKE(go.Brush, 'Linear', { 0: '#F0F8FF', 1: '#E6E6FA' });
     const bigfont = 'bold 13pt Helvetica, Arial, sans-serif';
     const smallfont = 'bold 11pt Helvetica, Arial, sans-serif';
-    const _this = this;
 
 
     function textStyle() {
@@ -69,12 +70,19 @@ export class CustomgojsComponent implements AfterViewInit {
       }
     });
     */
-   this.myDiagram.addDiagramListener('InitialLayoutCompleted', function(e) {
-    var dia = e.diagram;
-    // add height for horizontal scrollbar
-    dia.div.style.width = "640px";
-    dia.div.style.height = "480px";
-  });
+    this.myDiagram.addDiagramListener('InitialLayoutCompleted', function(e) {
+      var dia = e.diagram;
+      // add height for horizontal scrollbar
+      dia.div.style.width = "640px";
+      dia.div.style.height = "480px";
+    });
+    this.myDiagram.addDiagramListener('SelectionMoved', e => {
+      var dia = e.diagram;
+      dia.selection.each(n => {
+        if (!(n instanceof go.Node)) return;
+        this.store.dispatch({ type: TRIGGER_DIAGRAM_TEXT, payload: new DiagramTextAction(n.data.text || n.data.category) });
+      })
+    });
 
     const defaultAdornment =
       MAKE(go.Adornment, 'Spot',
@@ -198,9 +206,9 @@ export class CustomgojsComponent implements AfterViewInit {
       }
       e.handled = true;
       const arr = adorn.adornedPart.data.reasonsList;
-      _this.myDiagram.startTransaction('add reason');
-      _this.myDiagram.model.addArrayItem(arr, {});
-      _this.myDiagram.commitTransaction('add reason');
+      this.myDiagram.startTransaction('add reason');
+      this.myDiagram.model.addArrayItem(arr, {});
+      this.myDiagram.commitTransaction('add reason');
     }
 
     // clicking the button of a default node inserts a new node to the right of the selected node,
@@ -255,7 +263,7 @@ export class CustomgojsComponent implements AfterViewInit {
       MAKE(go.Palette, paletteDiv,  // create a new Palette in the HTML DIV element
         {
           // share the template map with the Palette
-          nodeTemplateMap: _this.myDiagram.nodeTemplateMap,
+          nodeTemplateMap: this.myDiagram.nodeTemplateMap,
           autoScale: go.Diagram.Uniform  // everything always fits in viewport
         });
 

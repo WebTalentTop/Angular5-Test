@@ -14,9 +14,12 @@ import { TRIGGER_SIDEBAR_TEXT, SidebarTextAction, AppState } from '../../reducer
 })
 export class SidenavComponent {
   date$: string;
+  selectedNode$: string;
+
   isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.Handset);
   constructor(private breakpointObserver: BreakpointObserver, public dialog: MatDialog, private store: Store<AppState>) {
     this.store.select('toolbar').subscribe( data => this.date$ = (data as any).payload );
+    this.store.select('diagram').subscribe( data => this.selectedNode$ = (data as any).payload );
   }
   openDialog() {
     const dialogRef = this.dialog.open(ToolbarDialog, {

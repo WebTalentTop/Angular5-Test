@@ -4,10 +4,12 @@ export interface AppState {
   name: string;
   toolbarText: string;
   sidebarText: string;
+  diagramText: string;
 }
 export const SET_NAME = 'SET_NAME';
 export const TRIGGER_TOOLBAR_TEXT = 'TRIGGER_TOOLBAR_TEXT';
 export const TRIGGER_SIDEBAR_TEXT = 'TRIGGER_SIDEBAR_TEXT';
+export const TRIGGER_DIAGRAM_TEXT = 'TRIGGER_DIAGRAM_TEXT';
 
 export class NameAction implements Action {
   type = SET_NAME
@@ -19,6 +21,11 @@ export class ToolbarTextAction implements Action {
 }
 export class SidebarTextAction implements Action {
   type = TRIGGER_SIDEBAR_TEXT
+  constructor(public payload: string) { }
+}
+
+export class DiagramTextAction implements Action {
+  type = TRIGGER_DIAGRAM_TEXT
   constructor(public payload: string) { }
 }
 
@@ -46,4 +53,11 @@ export function sidebarReducer(state: string = "" , action: SidebarTextAction) {
       return state;
   }
 }
-
+export function diagramReducer(state: string = "" , action: DiagramTextAction) {
+  switch (action.type) {
+    case TRIGGER_DIAGRAM_TEXT:
+      return action.payload;
+    default:
+      return state;
+  }
+}

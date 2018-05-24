@@ -12,6 +12,7 @@
       <a mat-list-item href="/diagram">Diagram Page</a>
       <a mat-list-item (click)="openDialog()">Dialog Button</a>
       <a mat-list-item>Time: {{date$}}</a>
+      <a mat-list-item>Node: {{selectedNode$}}</a>
       <div class="input-container">
         <mat-form-field>
           <input matInput placeholder="Enter some text" (change)="triggerText($event)" required>

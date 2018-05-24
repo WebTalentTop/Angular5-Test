@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { StoreModule } from '@ngrx/store';
-import { nameReducer, toolbarReducer, sidebarReducer } from './reducers';
+import { nameReducer, toolbarReducer, sidebarReducer, diagramReducer } from './reducers';
 
 
 import { AppComponent } from './app.component';
@@ -29,6 +29,7 @@ import { UIModule } from './ui/ui.module';
       name: nameReducer,
       toolbar: toolbarReducer,
       sidebar: sidebarReducer,
+      diagram: diagramReducer
     })
   ],
   providers: [],

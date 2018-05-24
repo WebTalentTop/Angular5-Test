@@ -6,19 +6,19 @@ export interface AppState {
   sidebarText: string;
 }
 export const SET_NAME = 'SET_NAME';
-export const SET_TOOLBAR_TEXT = 'SET_TOOLBAR_TEXT';
-export const SET_SIDEBAR_TEXT = 'SET_SIDEBAR_TEXT';
+export const TRIGGER_TOOLBAR_TEXT = 'TRIGGER_TOOLBAR_TEXT';
+export const TRIGGER_SIDEBAR_TEXT = 'TRIGGER_SIDEBAR_TEXT';
 
 export class NameAction implements Action {
   type = SET_NAME
   constructor(public payload: string) { }
 }
 export class ToolbarTextAction implements Action {
-  type = SET_TOOLBAR_TEXT
+  type = TRIGGER_TOOLBAR_TEXT
   constructor(public payload: string) { }
 }
 export class SidebarTextAction implements Action {
-  type = SET_SIDEBAR_TEXT
+  type = TRIGGER_SIDEBAR_TEXT
   constructor(public payload: string) { }
 }
 
@@ -32,7 +32,7 @@ export function nameReducer(state: string = "" , action: NameAction) {
 }
 export function toolbarReducer(state: string = "" , action: ToolbarTextAction) {
   switch (action.type) {
-    case SET_TOOLBAR_TEXT:
+    case TRIGGER_TOOLBAR_TEXT:
       return action.payload;
     default:
       return state;
@@ -40,7 +40,7 @@ export function toolbarReducer(state: string = "" , action: ToolbarTextAction) {
 }
 export function sidebarReducer(state: string = "" , action: SidebarTextAction) {
   switch (action.type) {
-    case SET_SIDEBAR_TEXT:
+    case TRIGGER_SIDEBAR_TEXT:
       return action.payload;
     default:
       return state;

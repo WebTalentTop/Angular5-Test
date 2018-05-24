@@ -19,7 +19,7 @@ export class ToolbarComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      console.log(`Dialog closed`);
     });
   }
 }

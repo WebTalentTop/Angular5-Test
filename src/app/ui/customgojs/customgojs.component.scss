@@ -1,0 +1,16 @@
+.bg {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  .dad-palette {
+    width: 150px;
+    margin-right: 2px;
+    background-color: whitesmoke;
+    border: solid 1px black;
+  }
+  .dad-diagram {
+    flex-grow: 1;
+    height: 480px;
+    border: solid 1px black;
+  }
+}

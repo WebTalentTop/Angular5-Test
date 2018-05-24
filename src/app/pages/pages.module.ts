@@ -4,6 +4,7 @@ import { MatCardModule, MatButtonModule } from '@angular/material';
 
 import { HomePageComponent } from './home-page/home-page.component';
 import { SecondPageComponent } from './second-page/second-page.component';
+import { CustomgojsComponent } from '../ui/customgojs/customgojs.component';
 
 @NgModule({
   imports: [
@@ -14,10 +15,12 @@ import { SecondPageComponent } from './second-page/second-page.component';
   declarations: [
     HomePageComponent,
     SecondPageComponent,
+    CustomgojsComponent
   ],
   exports: [
     HomePageComponent,
     SecondPageComponent,
+    CustomgojsComponent
   ],
 })
 export class PagesModule { }

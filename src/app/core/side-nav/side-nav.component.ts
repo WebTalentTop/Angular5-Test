@@ -5,7 +5,7 @@ import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/l
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { ToolbarDialog } from '../../ui/toolbar-dialog/toolbar-dialog.component';
-import { AppState } from '../../reducers';
+import { TRIGGER_SIDEBAR_TEXT, SidebarTextAction, AppState } from '../../reducers';
 
 @Component({
   selector: 'side-nav',
@@ -27,5 +27,8 @@ export class SidenavComponent {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog closed`);
     });
+  }
+  triggerText($event) {
+    this.store.dispatch({ type: TRIGGER_SIDEBAR_TEXT, payload: new SidebarTextAction($event.target.value) });
   }
 }

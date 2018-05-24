@@ -10,10 +10,12 @@ import { AppState } from '../../reducers';
 export class HomePageComponent implements OnInit {
 
   name$: string;
+  text$: string;
   constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
     this.store.select('name').subscribe( data => this.name$ = (data as any).payload );
+    this.store.select('sidebar').subscribe( data => this.text$ = (data as any).payload );
   }
 
 }

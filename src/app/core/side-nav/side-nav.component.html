@@ -12,6 +12,11 @@
       <a mat-list-item href="/second">Second Page</a>
       <a mat-list-item (click)="openDialog()">Dialog Button</a>
       <a mat-list-item>Time: {{date$}}</a>
+      <div class="input-container">
+        <mat-form-field>
+          <input matInput placeholder="Enter some text" (change)="triggerText($event)" required>
+        </mat-form-field>
+      </div>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
